@@ -1,0 +1,14 @@
+{
+  "name": "youtube-range-looper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dependency-free Chrome extension for looping a YouTube video range.",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check src/core.js && node --check src/content.js && node --check src/popup.js && node --check src/panel.js",
+    "format": "npx --yes prettier@3.6.2 --write src tests manifest.json package.json"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

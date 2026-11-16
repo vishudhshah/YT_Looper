@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>YouTube Range Looper</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="core.js" defer></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Range Looper</h1>
+        <span id="status" class="status">Loading</span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg id="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          <svg id="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg>
+        </button>
+      </header>
+
+      <section id="video-section" class="video-section" aria-label="Current video">
+        <p id="video-title" class="video-title">Connecting to your video…</p>
+      </section>
+
+      <section id="empty-state" class="empty-state" hidden>
+        <h2 id="empty-title">Open a YouTube video</h2>
+        <p id="empty-description">Play a video, then open this extension to choose the part you want to repeat.</p>
+        <button id="retry" class="secondary" type="button">Try again</button>
+      </section>
+
+      <form id="loop-form" hidden novalidate>
+        <div class="time-fields">
+          <div class="time-field">
+            <label for="start">Start time</label>
+            <input id="start" name="start" type="text" spellcheck="false" autocomplete="off" aria-describedby="time-hint start-error" placeholder="0:00" required>
+            <p id="start-error" class="field-error" aria-live="polite" hidden></p>
+            <button class="use-current" type="button" data-time="start">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M10 6v4l2.5 1.5"/></svg>
+              Use current<span class="sr-only"> position for start time</span>
+            </button>
+          </div>
+          <div class="time-field">
+            <label for="end">Stop time</label>
+            <input id="end" name="end" type="text" spellcheck="false" autocomplete="off" aria-describedby="time-hint end-error" placeholder="0:10" required>
+            <p id="end-error" class="field-error" aria-live="polite" hidden></p>
+            <button class="use-current" type="button" data-time="end">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M10 6v4l2.5 1.5"/></svg>
+              Use current<span class="sr-only"> position for stop time</span>
+            </button>
+          </div>
+        </div>
+        <p id="time-hint" class="hint">Use m:ss, h:mm:ss, or seconds.</p>
+
+        <p id="feedback" class="feedback" hidden role="status" aria-live="polite"></p>
+        <button id="toggle" class="primary" type="submit" disabled>
+          <span id="toggle-label">Start loop</span>
+        </button>
+        <button id="stop" class="stop-link" type="button" hidden>Stop current loop</button>
+        <button id="show-on-page" class="on-page" type="button">Show controls below video</button>
+      </form>
+      <label class="preference" for="default-controls">
+        <span>Show controls by default</span>
+        <input id="default-controls" type="checkbox" role="switch" disabled>
+      </label>
+      <p id="preference-error" class="field-error" role="status" hidden></p>
+    </main>
+  </body>
+</html>

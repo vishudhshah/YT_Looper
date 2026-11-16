@@ -1,0 +1,27 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.zip
+*.crx
+*.pem
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Tool output
+.impeccable/
+.playwright-mcp/
+playwright-report/
+test-results/
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
